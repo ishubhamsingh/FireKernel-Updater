@@ -11,6 +11,12 @@ android:
     - build-tools-26.0.0
     - android-25
 
+script: 
+    - chmod +x deploy.sh
+    - chmod +x configure.sh
+    - chmod +x buildReleaseApp.sh
+    - . deploy.sh
+
 notifications: 
   email: false
 

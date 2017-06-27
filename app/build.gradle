@@ -12,10 +12,26 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../extras/keystore/keystore.jks")
+            storePassword System.getenv("KEYSTORE_PASSWD")
+            keyAlias "FireLord"
+            keyPassword System.getenv("KEY_PASSWD")
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "FireKernel-${variant.versionCode}.apk"
+            }
         }
     }
     lintOptions {
