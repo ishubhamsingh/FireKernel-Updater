@@ -9,6 +9,8 @@
             android:title="@string/update" />
         <item android:id="@+id/nav_screenshot" android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/screenshot" />
+        <item android:id="@+id/nav_download" android:icon="@drawable/ic_menu_manage"
+            android:title="@string/download" />
     </group>
 
     <item android:title="@string/support">

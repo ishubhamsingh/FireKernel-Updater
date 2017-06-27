@@ -12,4 +12,6 @@
     <string name="support">Support</string>
     <string name="share">Share</string>
     <string name="donate">Donate</string>
+    <string name="download">Download</string>
+    <string name="checkforupdate">Check For Update</string>
 </resources>
