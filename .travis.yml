@@ -12,7 +12,7 @@ android:
     - android-25
 
 notifications: 
-  email: true
+  email: false
 
 cache:
   directories:
