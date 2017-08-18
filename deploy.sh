@@ -1,9 +1,13 @@
 #!/bin/bash
 
 # This script uploads the APK resulting from a CI build to Telegram
+
+#Start Building
+. buildReleaseApp.sh
+
 version_name=$(cat app/build.gradle | grep "versionCode" | awk '{print $2}' | cut -d '=' -f1)
 sha_hash=$(git rev-parse --short HEAD)
-cp app/build/outputs/apk/FireKernel-*.apk app/build/outputs/apk/release/FireKernel-"$version_name"_"$sha_hash".apk
+cp app/build/outputs/apk/release/FireKernel-*.apk app/build/outputs/apk/release/FireKernel-"$version_name"_"$sha_hash".apk
 apk=app/build/outputs/apk/release/FireKernel-"$version_name"_"$sha_hash".apk
 
 function notify() {
@@ -20,8 +24,6 @@ function notify() {
 function sendfile() {
   curl -F chat_id="$TG_GRP_ID" -F document="@$apk" "https://api.telegram.org/bot$TG_BOT_ID/sendDocument"
 }
-
-. buildReleaseApp.sh
 
 if [ -f "$apk" ];
 then
